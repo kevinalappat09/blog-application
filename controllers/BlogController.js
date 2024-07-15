@@ -142,7 +142,7 @@ exports.publishBlog = async (req,res) => {
 
 exports.listPublished = async (req,res) => {
     try {
-        const result = await Blog.find({published_state:true});
+        const result = await Blog.find({published_state:"published"});
         if(!result) {
             return res.status(400).json({mesage:"No blogs found"});
         }
