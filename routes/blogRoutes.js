@@ -7,7 +7,7 @@ const commentController = require("../controllers/CommentController");
 const AuthUtils = require("../utils/authUtils");
 
 // GET - / gets all the blogs
-router.get("/",AuthUtils.authenticateToken,  blogController.listBlogs);
+router.get("/admin",AuthUtils.authenticateToken,  blogController.listBlogs);
 
 
 // GET - /:author_id/ - gets all the blogs of a particular author
@@ -27,7 +27,8 @@ router.delete("/:author_id/:blog_id", AuthUtils.authenticateToken, blogControlle
 
 router.post("/:author_id/:blog_id/publish", AuthUtils.authenticateToken, blogController.publishBlog);
 
-router.get("/:author_id", blogController.listPublished);
+router.get("/", blogController.listPublished);
+
 
 router.get("/:author_id/:blog_id", blogController.returnPublishedBlog);
 
